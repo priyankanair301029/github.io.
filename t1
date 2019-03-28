@@ -1,0 +1,84 @@
+<p>&nbsp;</p>
+<p>Questions:</p>
+<p>As an administrator, how do I install and configure an Owncloud server?</p>
+<p>As an administrator, how do I enable users to connect to the Owncloud server using the server&#39;s IP address and port 8080?</p>
+<p>Assumption Windows system</p>
+<p>Answer:</p>
+<p>Prerequisite:</p>
+<p>Check your System Requirements: <a href='https://doc.owncloud.org/server/10.1/admin_manual/installation/system_requirements.html' target='_blank' class='url'>https://doc.owncloud.org/server/10.1/admin_manual/installation/system_requirements.html</a></p>
+<p>Create a Project Directory </p>
+<p>Download docker-compose.yml from<a href='https://github.com/owncloud-docker/server.git'> the ownCloud Docker GitHub repository</a>.</p>
+<p>Procedure:</p>
+<p>To install on your local system:</p>
+<p>Create a .env configuration file, with the following configuration settings:</p>
+<figure><table>
+<thead>
+<tr><th><strong>Setting Name</strong></th><th><strong>Description</strong></th><th style='text-align:center;' ><strong>Example</strong></th></tr></thead>
+<tbody><tr><td>OWNCLOUD_VERSION</td><td>The ownCloud version</td><td style='text-align:center;' >latest</td></tr><tr><td>OWNCLOUD_DOMAIN</td><td>The ownCloud domain</td><td style='text-align:center;' >localhost</td></tr><tr><td>ADMIN_USERNAME</td><td>The admin username</td><td style='text-align:center;' >admin</td></tr><tr><td>ADMIN_PASSWORD</td><td>The admin user’s password</td><td style='text-align:center;' >admin</td></tr><tr><td>HTTP_PORT</td><td>The HTTP port to bind to</td><td style='text-align:center;' >8080</td></tr></tbody>
+</table></figure>
+<p> Start the container as shown below using <a href='https://docs.docker.com/compose/'>Docker Compose</a>.</p>
+<p>Note: You can use any Docker Command-line Tool of your choice.</p>
+<pre><code class='language-console' lang='console'>&#39;&#39;&#39;&#39;# Create a new project directory
+mkdir owncloud-docker-server
+
+cd owncloud-docker-server
+
+# Copy docker-compose.yml from the GitHub repository
+wget https://raw.githubusercontent.com/owncloud-docker/server/master/docker-compose.yml
+
+# Create the environment configuration file
+cat &lt;&lt; EOF &gt; .env
+OWNCLOUD_VERSION=10.0
+OWNCLOUD_DOMAIN=localhost
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=admin
+HTTP_PORT=8080
+EOF
+
+# Build and start the container
+docker-compose up -d&#39;&#39;&#39;
+</code></pre>
+<p>Run docker-compose ps to ensure the process is complete and that all the containers have successfully started. If successful, you should expect to see output similar to that below:</p>
+<pre><code class='language-console' lang='console'>Name                Command                       State             Ports
+__________________________________________________________________________________________
+server_db_1         /usr/bin/entrypoint/bin/s …   Up                3306/tcp
+server_owncloud_1   /usr/local/bin/entrypoint …   Up                0.0.0.0:8080-&gt;8080/tcp
+server_redis_1      /bin/s6-svscan /etc/s6        Up                6379/tcp
+</code></pre>
+<p>The database, ownCloud, and Redis containers are running, and ownCloud is accessible via port 8080 on the host machine.</p>
+<figure><table>
+<thead>
+<tr><th>&nbsp;</th><th>Just because all the containers are running, it takes a few minutes for ownCloud to be fully functional. If you run <code>docker<span style='font-family:"Helvetica Neue", Helvetica, Arial, sans-serif'>-</span>compose logs <span style='font-family:"Helvetica Neue", Helvetica, Arial, sans-serif'>--</span>follow owncloud</code> and see a significant  amount of information logging to the console, then please wait until it  slows down to attempt to access the web UI.</th></tr></thead>
+<tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody>
+</table></figure>
+<p>Question:</p>
+<p>As an administrator, how do I add a user account?</p>
+<p>Answer:</p>
+<p>Procedure:</p>
+<p>Log in to the ownCloud UI, open <code>http://localhost:8080</code> in your browser of choice, where you see the standard ownCloud login screen.</p>
+<p>The username and password are the admin username and password stored in the<code>.env file</code>.</p>
+<p>To create a user account:</p>
+<p>Enter a <strong>Login Name</strong> and a initial <strong>Password</strong> (cannot be &quot;0&quot;).</p>
+<p>(Optional) Assign <strong>Groups</strong> memberships.</p>
+<p>Click the <strong>Create</strong> button</p>
+<p>Question:</p>
+<p>As a user, how do I connect to the Owncloud server using a desktop or mobile client?</p>
+<p>Answer:</p>
+<p>Prerequisite:</p>
+<p>Download the  latest version of the ownCloud Desktop Synchronization Client from the <a href='https://owncloud.org/install/#'>ownCloud Website</a>.</p>
+<p>Procedure:</p>
+<p>In the Installation wizard, select Integration for Windows Explorer. </p>
+<p>This allows users to share files directly from their local ownCloud folder in Windows Explorer, rather than having to open a Web browser and share from the ownCloud Web interface. </p>
+<p>In the next screen, select the installation folder for the client. </p>
+<p>Note: The default is fine; don’t change this without a good reason.</p>
+<p>In the next screen, enter your ownCloud server URL.</p>
+<p>Check “Trust this certificate”, if your ownCloud server has a self-signed SSL certificate.</p>
+<p>In the next screen ,enter the ownCloud login and password.</p>
+<p>Select folders and files to sync, and the location of your local ownCloud folder.</p>
+<p>The  “Choose what to sync”  opens a file picker.</p>
+<p>Note: Any unchecked folders are removed from your local filesystem. On a new installation, when you have not yet synced with your ownCloud server, no files will be deleted.</p>
+<p>In the next screen, either click to open ownCloud in a Web browser, or open your local ownCloud folder.</p>
+<p>Note:  Open your local ownCloud folder to view file manager integration.  You can also right-click any file or folder, and then left-click “Share with ownCloud” to create a share link. The Share With option available in Windows, is not the ownCloud Share option. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
