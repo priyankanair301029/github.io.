@@ -21,7 +21,7 @@
 <tbody><tr><td>OWNCLOUD_VERSION</td><td>The ownCloud version</td><td style='text-align:center;' >latest</td></tr><tr><td>OWNCLOUD_DOMAIN</td><td>The ownCloud domain</td><td style='text-align:center;' >localhost</td></tr><tr><td>ADMIN_USERNAME</td><td>The admin username</td><td style='text-align:center;' >admin</td></tr><tr><td>ADMIN_PASSWORD</td><td>The admin user’s password</td><td style='text-align:center;' >admin</td></tr><tr><td>HTTP_PORT</td><td>The HTTP port to bind to</td><td style='text-align:center;' >8080</td></tr></tbody>
 </table></figure>
 </li>
-<li><p> Start the container as shown below using <a href='https://docs.docker.com/compose/'>Docker Compose</a>.</p>
+<li><p>Start the container as shown below using <a href='https://docs.docker.com/compose/'>Docker Compose</a>.</p>
 <p><strong>Note</strong>: You can use any Docker Command-line Tool of your choice.</p>
 </li>
 
@@ -69,29 +69,22 @@ server_redis_1      /bin/s6-svscan /etc/s6        Up                6379/tcp
 <ol>
 <li>Log in to the ownCloud UI, open <code>http://localhost:8080</code> in your browser of choice, where you see the standard ownCloud login screen.</li>
 <li>The username and password are the admin username and password stored in the<code>.env file</code>.</li>
-
-</ol>
-<ol start='3' >
-<li><p>To create a user account, enter a <strong>Login Name</strong> and a initial <strong>Password</strong> (cannot be &quot;0&quot;).</p>
-<p>The <strong>Login Name</strong> may contain letters (a-z, A-Z), numbers (0-9), dashes (-), underscores (_), periods (.) and at signs (@). After creating the user, you can either fill in their <strong>Full Name</strong> if it is different than the login name, or leave it for the user to complete.</p>
-</li>
-
-</ol>
-<ol start='4' >
+<li>To create a user account, enter a <strong>Login Name</strong> and a initial <strong>Password</strong> (cannot be &quot;0&quot;).</li>
+<li>The <strong>Login Name</strong> may contain letters (a-z, A-Z), numbers (0-9), dashes (-), underscores (_), periods (.) and at signs (@). After creating the user, you can either fill in their <strong>Full Name</strong> if it is different than the login name, or leave it for the user to complete.</li>
 <li>(Optional) Assign <strong>Groups</strong> memberships.</li>
-
-</ol>
-<ol start='5' >
-<li><p>Click the <strong>Create</strong> button.</p>
-<p> If you have checked <strong>Send email to new user</strong> in the control panel, enter the new user’s email address, and ownCloud will automatically send them a notification with their new login information. You can also edit the email using the email template editor on your Admin page (see <a href='https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/email_configuration.html'><em>Email Configuration</em></a>).</p>
-</li>
+<li>Click the <strong>Create</strong> button.</li>
+<li>If you have checked <strong>Send email to new user</strong> in the control panel, enter the new user’s email address, and ownCloud will automatically send them a notification with their new login information. You can also edit the email using the email template editor on your Admin page (see <a href='https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/email_configuration.html'><em>Email Configuration</em></a>).</li>
 
 </ol>
 <p>Question:</p>
 <p>As a user, how do I connect to the Owncloud server using a desktop or mobile client?</p>
 <p>Answer:</p>
 <h3>Prerequisite:</h3>
-<p>Download the  latest version of the ownCloud Desktop Synchronization Client from the <a href='https://owncloud.org/install/#'>ownCloud Website</a>.</p>
+<ul>
+<li>Check System Requirements: <a href='https://doc.owncloud.com/desktop/2.5/installing.html#system-requirements' target='_blank' class='url'>https://doc.owncloud.com/desktop/2.5/installing.html#system-requirements</a></li>
+<li>Download the  latest version of the ownCloud Desktop Synchronization Client from the <a href='https://owncloud.org/install/#'>ownCloud Website</a>.</li>
+
+</ul>
 <h3>Procedure:</h3>
 <ol>
 <li><p>In the Installation wizard, select Integration for Windows Explorer. </p>
@@ -117,4 +110,6 @@ server_redis_1      /bin/s6-svscan /etc/s6        Up                6379/tcp
 </li>
 
 </ol>
-
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
