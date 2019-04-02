@@ -25,7 +25,7 @@ twitter_username: jekyllrb
 github_username:  jekyll
 
 # Build settings
-markdown: Typora
+markdown: kramdown
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
