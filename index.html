@@ -63,7 +63,7 @@ server_owncloud_1   /usr/local/bin/entrypoint …   Up                0.0.0.0:80
 server_redis_1      /bin/s6-svscan /etc/s6        Up                6379/tcp
 </code></pre>
 <p>The database, ownCloud, and Redis containers are running, and ownCloud is accessible via port 8080 on the host machine.</p>
-<p>Note: It takes a few minutes for ownCloud to be fully functional. You can use the <em>docker-compose logs --follow owncloud</em> command and see a significant  amount of information logging to the console, wait until it  slows down to attempt to access the web UI.</p><figure><table>
+<p><b>Note</b>: It takes a few minutes for ownCloud to be fully functional. You can use the <em>docker-compose logs --follow owncloud</em> command and see a significant  amount of information logging to the console, wait until it  slows down to attempt to access the web UI.</p><figure><table>
 
 <tbody><tr><td>&nbsp;</td><td>&nbsp;</td></tr></tbody>
 </table></figure>
